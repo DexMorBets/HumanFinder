@@ -57,6 +57,10 @@ h1, h2, h3, h4 {
 	padding-top: 20px;
 }
 
+.glyphicon-edit {
+	padding-top: 20px;
+}
+
 p {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 15pt;
