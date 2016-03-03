@@ -1,10 +1,4 @@
-h1 a {
-        color: 12C4B2;
-    }
-body {
-        padding-left: 15px;
-    }
-	
+
 .page-header {
         background-color: #12C4B2;
         margin-top: 0;
@@ -59,6 +53,20 @@ h1, h2, h3, h4 {
 
 .glyphicon-edit {
 	padding-top: 20px;
+}
+
+.glyphicon-lock {
+	padding-top: 20px;
+}
+
+.glyphicon-off{
+	padding-top: 22px;
+	color: #ffffff;
+	margin-left: 20px;
+}
+
+.username {
+	margin-bottom: 15px;
 }
 
 p {
