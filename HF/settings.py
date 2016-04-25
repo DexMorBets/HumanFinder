@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'app',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,7 +56,10 @@ ROOT_URLCONF = 'HF.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'app/templates/blog'),
+            os.path.join(BASE_DIR, 'app/templates/registration'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,7 +93,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'Europe/Minsk'
 
@@ -107,3 +110,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/img')
+
+MEDIA_URL = '/Photos/'

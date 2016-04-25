@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p id="error_login">Your username and password didn't match. Please try again.</p>
+{% endif %}
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+    <div class="register_div col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <p class="nov_ob2">Регистрация</p>
+        <form class="form-horizontal" method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+            <div class="form-group login_group">
+                <div class="">
+                    <input type="text" id="id_username" name="username" placeholder="Имя пользователя" >
+                </div>
+            </div>
+            <div class="form-group login_group">
+                <div class="">
+                    <input type="password"  id="id_password1" name="password1" placeholder="Пароль">
+                </div>
+            </div>
+            <div class="form-group login_group">
+                <div class="">
+                    <input type="password" id="id_password2" name="password2" placeholder="Подтверждение пароля">
+                </div>
+            </div>
+            <div class="form-group login_group">
+                <div class="col-sm-offset-2" id="div_btn_login">
+                    <button type="submit" class="btn btn-primary" value="register" id="btn_login1">Зарегистрироваться</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+</div>
+{% endblock %}

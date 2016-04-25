@@ -1,20 +1,172 @@
 {% extends 'blog/base.html' %}
+{% load staticfiles %}
 
 {% block content %}
-    <div class="post">
+    <div class="post1">
         {% if post.published_date %}
             <div class="date">
-                {{ post.published_date }}
+                <p>{{ post.published_date }}</p>
             </div>
 		{% else %}
-			<a class="btn btn-default" href="{% url 'app.views.post_publish' pk=post.pk %}">Publish</a>
+			<a class="btn btn-default opub" href="{% url 'app.views.post_publish' pk=post.pk %}">Опубликовать</a>
         {% endif %}
 		{% if user.is_authenticated %}
-		<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-		<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+		    <a class="btn pencil" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil pencil1"></span></a>
+		    <a class="btn remove" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove remove1"></span></a>
 		{% endif %}
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaks }}</p>
-     </div>
+        <h1 class="FIO_post_detail">{{ post.surname }} {{ post.name }} {{ post.fam }}</h1>
+        <div class="row row1">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="row profile opis_post_detail">Возраст<div class="row_age">{{ post.age }}</div><p class="sm">лет</p></div>
+            </div>
+            {% if post.gender == 'Мужчина' %}
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img class="Male" src="{% static "img/post/Male.png" %}" alt="User" />
+                </div>
+            {% else %}
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img class="Male" src="{% static "img/post/Female.png" %}" alt="User" />
+                </div>
+            {% endif %}
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="row profile opis_post_detail">Рост<div class="row_height">{{ post.height }}</div><p class="sm">см</p></div>
+            </div>
+        </div>
+        <hr class="hr_post_detail">
+        <div class="row row2">
+            <div class="vnesh col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <img class="Torso" src="{% static "img/post/Torso.png" %}" alt="Body" />
+                <p class="profile">{{ post.body }}</p>
+            </div>
+            <div class="vnesh col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <img class="Haircut" src="{% static "img/post/Hair.png" %}" alt="Hair" />
+                <p class="profile">{{ post.hair_color }}</p>
+            </div>
+            <div class="vnesh col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <img class="Eye" src="{% static "img/post/Eye.png" %}" alt="Eye" />
+                <p class="profile">{{ post.eyes_color }}</p>
+            </div>
+        </div>
+        <hr class="hr_post_detail">
+        <div class="row row3">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <img class="Hat" src="{% static "img/post/Hat.png" %}" alt="Hat" />
+                <p class="profile">{{ post.hat }}</p>
+                {% if post.hat_color %}
+                    <div class="circle hat_color"></div>
+                    <style type="text/css">
+                        .hat_color {background-color: {{ post.hat_color.color_code }}
+                    </style>
+                {% endif %}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <img class="Verh" src="{% static "img/post/Verh.png" %}" alt="Verh" />
+                <p class="profile">{{ post.vverh }}</p>
+                {% if post.vverh_color %}
+                    <div class="circle vverh_color"></div>
+                    <style type="text/css">
+                        .vverh_color {background-color: {{ post.vverh_color.color_code }}
+                    </style>
+                {% endif %}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <img class="Niz" src="{% static "img/post/niz.png" %}" alt="Niz" />
+                <p class="profile">{{ post.niz }}</p>
+                {% if post.niz_color %}
+                    <div class="circle niz_color"></div>
+                    <style type="text/css">
+                        .niz_color {background-color: {{ post.niz_color.color_code }}
+                    </style>
+                {% endif %}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <img class="Boots" src="{% static "img/post/boots.png" %}" alt="Boots" />
+                <p class="profile">{{ post.boots }}</p>
+                {% if post.boots_color %}
+                    <div class="circle boots_color"></div>
+                    <style type="text/css">
+                        .boots_color {background-color: {{ post.boots_color.color_code }}
+                    </style>
+                {% endif %}
+            </div>
+        </div>
+        <hr class="hr_post_detail">
+        <div class="row row4">
+            {% if not post.shramy and not post.tatu and not post.protez and not post.konech %}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p class="primet1">Приметы отсутствуют</p>
+            </div>
+            {% else %}
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p class="primet">Приметы</p>
+                {% if post.shramy %}
+                    <p>Щрамы</p>
+                {% endif %}
+                {% if post.tatu %}
+                    <p>Тату</p>
+                {% endif %}
+                {% if post.protez%}
+                    <p>Протез</p>
+                {% endif %}
+                {% if post.konech%}
+                    <p>Отсутвует конечность</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        <hr class="hr_post_detail">
+        <div class="row row5">
+            {% if not post.text %}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p class="primet1">Приметы себе ничего не имел</p>
+            </div>
+            {% else %}
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <p class="primet">При себе имел</p>
+                    <p>{{ post.text|linebreaks }}</p>
+                </div>
+            {% endif %}
+        </div>
+        <hr class="hr_post_detail">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p class="primet">Местонахождение</p>
+            </div>
+        </div>
+        <div class="row row6">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p>{{ post.hospital.hospital_name }}</p>
+            </div>
+        </div>
+        <div class="row row7">
+            <div class="adress col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <p class="address">{{ post.hospital.hospital_adress }}</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <p class="number">{{ post.hospital.hospital_number1 }}</p>
+            </div>
+        </div>
+     </div>	 
+<hr>
+{% if user.is_authenticated %}
+<a class="btn btn-default save2" href="{% url 'add_comment_to_post' pk=post.pk %}">Добавить комментарий</a>
+{% endif %}
+{% for comment in post.comments.all %}
+    {% if user.is_authenticated or comment.approved_comment %}
+    <div class="comment">
+        <div class="date1">
+            {{ comment.created_date }}
+            {% if not comment.approved_comment %}
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+            {% endif %}
+        </div>
+        <strong class="author">{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+    {% endif %}
+{% empty %}
+    <p>Ещё не добавлено ни одного коментария.</p>
+{% endfor %}
 	 
 {% endblock %}

@@ -1,9 +1,121 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-	<h1>New post</h1>
+    {% if form.errors %}
+        <p id="error_login">{{ form.errors }}</p>
+    {% endif %}
 	<form method="POST" class="post-form">{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit" class="save btn btn-default">Save</button>
+        <div class="edit_form col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <p class="nov_ob">Новое объявления</p>
+            <div class="FIO">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    {{ form.surname }}
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    {{ form.name }}
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    {{ form.fam }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="gender">
+                    {{ radio.choice_label }}
+                    {% for radio in form.gender %}
+                        <div class="radio{{ radio.id_for_label }}">
+                            <div class="radio_label col-lg-6 col-md-6 col-sm-6 col-xs-6">{{ radio.tag }}</div>
+                            <div class="radio_tag col-lg-6 col-md-6 col-sm-6 col-xs-6">{{ radio.choice_label }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="edit_form1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <p class="opis">Описание</p>
+            <div class="row age">
+                {{ form.age }}
+                {{ form.height }}
+            </div>
+            <div class="opis_2">
+                <div class="bodys">
+                    <div class="row">
+                        <p>Телосложения</p>
+                        {{ form.body }}
+                    </div>
+                </div>
+                <div class="hair">
+                    <div class="row">
+                        <p>Цвет волос</p>
+                        {{ form.hair_color }}
+                    </div>
+                </div>
+                <div class="eyes">
+                    <div class="row">
+                        <p>Цвет глаз</p>
+                        {{ form.eyes_color }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                <div class="check row col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    <div>Шрамы:<p>{{ form.shramy }}</p></div>
+                    <div>Тату:<p>{{ form.tatu }}</p></div>
+                    <div>Протезы:<p>{{ form.protez }}</p></div>
+                    <div>Отсутвствие конечностей:<p>{{ form.konech }}</p></div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+            </div>
+        </div>
+        <div class="edit_form2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <p class="opis">Обстоятельства обнаружения</p>
+            <div class="row bodys">
+                <p>Город</p>
+                {{ form.city }}
+            </div>
+            <div class="row bodys">
+                <p>Название учреждения</p>
+                {{ form.hospital }}
+            </div>
+            <div class="row bodys">
+                <p>Головной убор</p>
+                {{ form.hat }}
+            </div>
+            <div class="row bodys">
+                <p>Цвет головного убора</p>
+                {{ form.hat_color }}
+            </div>
+            <div class="row bodys">
+                <p>Верхняя одежда</p>
+                {{ form.vverh }}
+            </div>
+            <div class="row bodys">
+                <p>Цвет верхней одежды</p>
+                {{ form.vverh_color }}
+            </div>
+            <div class="row bodys">
+                <p>Штаны</p>
+                {{ form.niz }}
+            </div>
+            <div class="row bodys">
+                <p>Цвет штанов</p>
+                {{ form.niz_color }}
+            </div>
+            <div class="row bodys">
+                <p>Обувь</p>
+                {{ form.boots }}
+            </div>
+            <div class="row bodys">
+                <p>Цвет обуви</p>
+                {{ form.boots_color }}
+            </div>
+            <div class="text">
+                {% if form.text.value %}
+                    <textarea cols="40" id="id_text" name="text" rows="10" placeholder="При себе имел">{{ form.text.value }}</textarea>
+                {% else %}
+                    <textarea cols="40" id="id_text" name="text" rows="10" placeholder="При себе имел">{{ form.text.placeholder }}</textarea>
+                {% endif %}
+            </div>
+            <button type="submit" class="save1 btn btn-default">Сохранить</button>
+        </div>
 	</form>
 {% endblock %}

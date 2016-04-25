@@ -1,13 +1,113 @@
-	{% extends 'blog/base.html' %}
-	
-	{% block content %}
-		{% for post in posts %}
-			<div class="post">
-				<div class="date">
-					{{ post.published_date }}
-				</div>
-				<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-				<p>{{ post.text|linebreaks }}</p>
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+
+{% block search %}
+    <div class="row search1">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <form method="GET"  class="navbar-form">{% csrf_token %}
+                <div class="form-group">
+                        {{ form.name }}
+                        {{ form.surname }}
+                        {{ form.fam }}
+                </div>
+                <button type="submit" class="btn btn-default save3">Искать</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post3 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="post">
+            <a class="comments" href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.approved_comments.count }}</a>
+			<div class="date1">
+				<p class="date1">{{ post.published_date }}</p>
 			</div>
-		{% endfor %}
-	{% endblock content %}
+			<h1 class="FIO_post_detail1"><a href="{% url 'app.views.post_detail' pk=post.pk %}">{{ post.surname }} {{ post.name }} {{ post.fam }}</a></h1>
+            <div class="row row11">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="row profile1 opis_post_detail">Возраст<div class="row_age1">{{ post.age }}</div><p class="sm1">лет</p></div>
+                </div>
+                {% if post.gender == 'Мужчина' %}
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <img class="Male1" src="{% static "img/post/Male.png" %}" alt="User" />
+                    </div>
+                {% else %}
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <img class="Male1" src="{% static "img/post/Female.png" %}" alt="User" />
+                    </div>
+                {% endif %}
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="row profile1 opis_post_detail">Рост<div class="row_height1">{{ post.height }}</div><p class="sm1">см</p></div>
+                </div>
+            </div>
+
+            <hr class="hr_post_detail1">
+
+            <div class="row row21">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img class="Torso1" src="{% static "img/post/Torso.png" %}" alt="Body" />
+                    <p class="profile1">{{ post.body }}</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img class="Haircut" src="{% static "img/post/Hair.png" %}" alt="Hair" />
+                    <p class="profile1">{{ post.hair_color }}</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img class="Eye1" src="{% static "img/post/Eye.png" %}" alt="Eye" />
+                    <p class="profile1">{{ post.eyes_color }}</p>
+                </div>
+            </div>
+
+            <hr class="hr_post_detail1">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <p class="primet2">Местонахождение</p>
+                </div>
+            </div>
+            <div class="row row6">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <p class="hospital_name">{{ post.hospital.hospital_name }}</p>
+                </div>
+            </div>
+            <div class="row row71">
+                <div class="adress col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <p class="address1">{{ post.hospital.hospital_adress }}</p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <p class="number1">{{ post.hospital.hospital_number1 }}</p>
+                </div>
+            </div>
+		</div>
+        </div>
+	{% endfor %}
+
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 columns">
+            <ul class="pagination">
+                {% if posts.has_previous %}
+                    <li class="arrow"><a href="/page/{{ posts.previous_page_number }}/">&laquo;</a></li>
+                {% else %}
+                    <li class="arrow disabled"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for page in posts.paginator.page_range %}
+                    {% if page == posts.number %}
+                        <li class="current"><a href="/page/{{ page }}/">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="/page/{{ page }}/">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if posts.has_next %}
+                    <li class="arrow"><a href="/page/{{ posts.next_page_number }}/">&raquo;</a></li>
+                {% else %}
+                    <li class="arrow disabled"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Django default" uuid="61a2c7cb-a1f6-4b26-b6f8-bdefdf746856">
+      <user-name>admin</user-name>
+      <user-password>dfcbdfcedfc7dfc3dfc4</user-password>
+      <schema-pattern>humanfinder.pg_catalog humanfinder.public</schema-pattern>
+      <default-schemas>humanfinder.pg_catalog humanfinder.public</default-schemas>
+    </data-source>
+  </component>
+</project>
