@@ -113,4 +113,4 @@ LOGIN_REDIRECT_URL = '/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/img')
 
-MEDIA_URL = '/Photos/'
+MEDIA_URL = 'img/'

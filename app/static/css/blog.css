@@ -2,7 +2,7 @@ body {
     padding-top: 60px;
     padding-left: 0px;
     padding-right: 0px;
-    min-width: 1250px;
+    min-width: 1355px;
     background-color: #F0F0F0;
 }
 
@@ -17,11 +17,12 @@ body {
 
 .search1 {
     margin-bottom: 30px;
+    margin-top: 8px;
     background-color: #F5F5F5;
     position:fixed;
     z-index: 9;
     width: 102%;
-    min-width: 1000px;
+    min-width: 1370px;
 }
 
 .modal-footer {
@@ -31,13 +32,14 @@ body {
 }
 
 .page-header {
-    min-width: 800px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    min-width: 1370px;
     background-color: #303841;
     margin-top: 0;
     padding-top: 0;
     margin-bottom: 25px;
     border-bottom: 0px;
-    height: 60px;
+    height: 68px;
     z-index: 10;
     }
 	
@@ -77,10 +79,22 @@ h1, h2, h3, h4 {
 .date1 {
     font-size: 16px;
     margin-right: 0;
+    float: right;
+}
+
+.date2 {
+    font-size: 16px;
+    margin-right: 0;
+    float: right;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
 }
 
 .save {
         float: right;
+        display: block;
     }
 
 .post-form textarea, .post-form input {
@@ -111,9 +125,10 @@ h1, h2, h3, h4 {
         padding: 5px;
         border-radius: 18px;
         margin-top: 30px;
-        padding-right: 15px;
-        padding-left: 15px;
+        padding-right: 17px;
+        padding-left: 17px;
         padding-top: 13px;
+        padding-bottom: 15px;
     }
 
 .post2 {
@@ -142,23 +157,20 @@ h1, h2, h3, h4 {
     }
 
 .glyphicon-plus {
-	padding: 10px;
-    padding-top: 9px;
     color: white;
     font-size: 17px;
+    margin-top: 11px;
 
 }
 
-.glyphicon-edit {
-	padding: 7px;
+.glyphicon-check {
     color: white;
     font-size: 17px;
-    padding: 10px;
-    padding-top: 9px;
+    margin-top: 11px;
+    margin-right: 0;
 }
 
 .glyphicon-lock {
-	padding: 7px;
     color: white;
     font-size: 17px;
     padding: 10px;
@@ -166,9 +178,7 @@ h1, h2, h3, h4 {
 }
 
 .glyphicon-off{
-	padding: 7px;
     color: white;
-    font-size: 17px;
     font-size: 17px;
     padding: 10px;
 }
@@ -179,11 +189,16 @@ h1, h2, h3, h4 {
 
 .username {
     margin-bottom: 0px;
-    padding-top: 15px;
+    padding-top: 17px;
 }
 
 #username_a {
     color: #3EB9F7;
+}
+
+#username_a:hover {
+    color: #1DCFF7;
+    text-decoration: none;
 }
 
 .comment {
@@ -192,6 +207,11 @@ h1, h2, h3, h4 {
     padding: 20px;
     border-radius: 18px;
     min-width: 600px;
+    height: auto;
+}
+
+.comment:last-child {
+    margin-bottom: 40px;
 }
 
 p {
@@ -247,6 +267,7 @@ p {
 
 .HF {
     padding-left: 60px;
+    padding-top: 0;
 }
 
 .btn {
@@ -296,6 +317,12 @@ p {
     color: #333;
 }
 
+.author1 {
+    font-size: 18px;
+    color: #333;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .pencil, .remove {
     padding: 0;
     padding-top: 0;
@@ -333,34 +360,21 @@ p {
 }
 
 .plus {
-    margin-top: 11px;
-    margin-right: 12px;
-    width: 36px;
-    height: 36px;
-    border-radius: 30px;
-    background-color: #3EB9F7;
+    width: auto;
+    height: auto;
+    margin-right: 10px;
 }
 
-.plus:hover {
-    background-color: #1DCFF7;
-}
 
 .edit {
-    margin-top: 11px;
-    margin-right: 12px;
-    width: 36px;
-    height: 36px;
-    border-radius: 30px;
-    background-color: #3EB9F7;
-}
-
-.edit:hover {
-    background-color: #1DCFF7;
+    width: auto;
+    height: auto;
+    padding-right: 0;
 }
 
 .off {
-    margin-top: 11px;
-    margin-right: 12px;
+    margin-top: 15px;
+    margin-right: 15px;
     width: 36px;
     height: 36px;
     border-radius: 30px;
@@ -372,8 +386,8 @@ p {
 }
 
 .lock {
-    margin-top: 11px;
-    margin-right: 12px;
+    margin-top: 15px;
+    margin-right: 15px;
     width: 36px;
     height: 36px;
     border-radius: 30px;
@@ -446,6 +460,12 @@ select {
     font-size: 40px;
 }
 
+.nov_ob1 {
+    text-align: left;
+    font-size: 40px;
+    margin-left: 15px;
+}
+
 .nov_ob2 {
     text-align: center;
     margin-bottom: 30px;
@@ -510,9 +530,14 @@ select {
 
 #id_text {
     padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 20px;
-    margin-top: 40px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    height: 200px;
+    text-align: justify;
 }
 
 .opis {
@@ -558,6 +583,21 @@ select {
 .bodys, .eyes, .hair {
     padding: 6px 12px 6px 12px;
     margin-bottom: 0;
+}
+
+.user_address, .user_phone_number {
+    padding: 6px 12px 6px 12px;
+    margin-bottom: 0;
+}
+
+.user_phone_number {
+    margin-bottom: 45px;
+}
+
+#id_address, #id_phone_number {
+    padding: 6px 12px 6px 12px;
+    width: 40%;
+    font-size: 25px;
 }
 
 .check {
@@ -638,6 +678,10 @@ select {
     font-size: 25px;
 }
 
+#id_boots_color {
+    margin-bottom: 70px;
+}
+
 .save1, .save2 {
     font-family: 'Open Sans Condensed', sans-serif;
     text-align: center;
@@ -648,6 +692,7 @@ select {
 
 .save2 {
     margin-bottom: 10px;
+    margin-left: 15px;
 }
 
 .save3 {
@@ -680,6 +725,12 @@ select {
     height: 60px;
     width: 60px;
     margin-bottom: 30px;
+}
+
+.User {
+    margin-top: 1px;
+    height: 35px;
+    width: 35px;
 }
 
 .Torso {
@@ -802,12 +853,12 @@ hr {
 }
 
 .profile {
-    font-family: 'Open Sans Condensed', sans-serif; ;
+    font-family: 'Open Sans Condensed', sans-serif;
     font-size: 27px;
 }
 
 .profile1 {
-    font-family: 'Open Sans Condensed', sans-serif; ;
+    font-family: 'Open Sans Condensed', sans-serif;
     font-size: 22px;
 }
 
@@ -857,6 +908,7 @@ hr {
 
 .hospital_name {
     margin-bottom: 0;
+    margin-bottom: 15px;
 }
 
 .sm {
@@ -886,4 +938,144 @@ hr {
     border-radius: 30px;
     margin-left: 45%;
     margin-bottom: 15px;
+}
+
+#map {
+    height: 100%;
+}
+
+.block_post {
+    padding: 0;
+}
+
+.body1 {
+}
+
+.comment_text {
+    overflow-wrap: break-word;
+    padding-left: 35px;
+    padding-top: 13px;
+    padding-right: 10px;
+    height: auto;
+    text-align: justify;
+    margin-bottom: 0;
+}
+
+.comment_col1 {
+    width: auto;
+}
+
+.comment_col2 {
+    padding: 0;
+    padding-right: 5px;
+    width: 90%;
+}
+
+.comment_buttons {
+    float: left;
+}
+
+.comment_remove1 {
+    margin-left: 35px;
+}
+
+.comment_remove {
+    margin-left: 32px;
+    padding-top: 0;
+    padding-right: 0;
+}
+
+.comment_pencil {
+    margin-left: 34px;
+    padding-top: 0;
+    padding-right: 0;
+}
+
+.comment_ok1 {
+    padding-top: 0;
+    margin-left: 20px;
+}
+
+.comment_ok {
+    padding-top: 0;
+    padding-left: 0;
+    width: 10px;
+    padding-right: 0;
+}
+
+.comment_hr {
+    border-color: black;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.comment_str {
+    margin-top: 1px;
+}
+
+#findyou, #manual {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    color: #3EB9F7;
+    padding-left: 23%;
+}
+
+#manual {
+    padding-left: 35%;
+}
+
+#findyou:hover, #manual:hover {
+    text-decoration: none;
+    color: #1DCFF7;
+}
+
+#findyouhospital {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    color: #3EB9F7;
+    padding-left: 25%;
+}
+
+#findyouhospital:hover {
+    text-decoration: none;
+    color: #1DCFF7;
+}
+
+.nocomm {
+    margin-bottom: 20px;
+}
+
+.image_edit {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 50px;
+    font-size: 15px;
+}
+
+a .image_edit{
+    font-size: 15px;
+}
+
+#id_image {
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding: 6px 12px 6px 12px;
+    background-color: white;
+    font-size: 25px;
+}
+
+.image_detail {
+    padding: 0;
+}
+
+.opis_post_detail1 {
+    /*margin-top: 25%;*/
+}
+
+.round {
+    border-radius: 18px;
+    margin-bottom: 15px;
+    border: 1px solid #3EB9F7;
 }

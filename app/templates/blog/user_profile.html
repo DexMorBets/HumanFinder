@@ -2,33 +2,35 @@
 
 
 {% block content %}
-
-<div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        <form class="form-horizontal" method="post" action="{% url 'user_profile' %}">
-        {% csrf_token %}
-            <div class="form-group login_group">
-                <div class="">
-                    {{ form.first_name.errors }}
-                    {{ form.first_name.label_tag }} <input type="text" class="form-control" id="id_first_name" name="first_name" >
-                </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+    <div class="content container col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <form class="form-horizontal" method="post" action="{% url 'user_profile' %}">
+                {% csrf_token %}
+                    <div class="form-group login_group">
+                        <div class="">
+                            {{ form.first_name.errors }}
+                            {{ form.first_name.label_tag }} <input type="text" class="form-control" id="id_first_name" name="first_name" >
+                        </div>
+                    </div>
+                    <div class="form-group login_group">
+                        <div class="">
+                            {{ form.last_name.errors }}
+                            {{ form.last_name.label_tag }} <input type="text" class="form-control" id="id_last_name" name="last_name" >
+                        </div>
+                    </div>
+                    <div class="form-group login_group">
+                        <div class="col-sm-offset-2" id="div_btn_login">
+                            <button type="submit" class="btn btn-primary" value="save" id="btn_login">Сохранить</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group login_group">
-                <div class="">
-                    {{ form.last_name.errors }}
-                    {{ form.last_name.label_tag }} <input type="text" class="form-control" id="id_last_name" name="last_name" >
-                </div>
-            </div>
-            <div class="form-group login_group">
-                <div class="col-sm-offset-2" id="div_btn_login">
-                    <button type="submit" class="btn btn-primary" value="save" id="btn_login">Сохранить</button>
-                </div>
-            </div>
-        </form>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+        </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
-</div>
-
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
 
 {% endblock %}

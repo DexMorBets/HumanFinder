@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
     <html>
         <head>
             <title>HumanFinder</title>
@@ -10,30 +11,81 @@
             <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico'%}"/>
         </head>
         <body>
-        <div class="body col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="page-header navbar-fixed-top">
-				{% if user.is_authenticated %}
-				<a href="{% url 'post_new' %}" class="top-menu plus"><span class="glyphicon glyphicon-plus"></span></a>
-				<a href="{% url 'post_draft_list' %}" class="top-menu edit"><span class="glyphicon glyphicon-edit"></span></a>
-                <a href="{% url 'django.contrib.auth.views.logout' %}" class="top-menu off"><span class="glyphicon glyphicon-off"></span></a>
-				<p class="top-menu username"><a id="username_a" href ='{% url 'user_profile' %}'>{{ user.username }}</a></p>
-				{% else %}
-				<a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu lock"><span class="glyphicon glyphicon-lock"></span></a>
-				{% endif %}
-				<h1><a class="HF" href="{% url 'app.views.post_list' %}">HumanFinder</a></h1>
+        <div class="body1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row page-header navbar-fixed-top">
+                <div style="padding: 0" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <h1 style="padding-top: 0"><a style="float: left; margin-left: 10px;" class="HF" href="{% url 'app.views.post_list' %}">HumanFinder</a></h1>
+                </div>
+                <div style="padding: 0; padding-top: 14px;" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <a style="float: left; margin-right: 10px;" class="" id="findyouhospital" href ="{% url 'post_list' %}">Пациенты</a>
+                    {% if user.is_authenticated %}
+                        {% if perms.app %}
+                                <a style="float: left" href="{% url 'post_new' %}" class="top-menu plus"><span class="glyphicon glyphicon-plus"></span></a>
+                        {% endif %}
+                        {% if user.is_superuser %}
+                                <a style="float: left" href="{% url 'post_draft_list' %}" class="top-menu edit"><span style="border: 0" class="glyphicon glyphicon-check"></span></a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div style="padding: 0; padding-top: 14px;" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <a style="float:left; margin-right: 10px;" class="" id="findyou" href ="{% url 'post_list_user' %}">Объявления</a>
+                    {% if user.is_authenticated %}
+                        <a style="float: left" href="{% url 'post_new_user' %}" class="top-menu plus"><span class="glyphicon glyphicon-plus"></span></a>
+                        {% if user.is_superuser %}
+                                <a style="float: left" href="{% url 'post_draft_list_user' %}" class="top-menu edit"><span class="glyphicon glyphicon-check"></span></a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div style="padding: 0; padding-top: 14px;" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <a style="float:left; margin-right: 10px;" class="" id="manual" href ="{% url 'post_list_user' %}">Инструкция</a>
+                </div>
+                <div style="padding: 0; padding-right: 15px" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    {% if user.is_authenticated %}
+                        <a style="" href="{% url 'django.contrib.auth.views.logout' %}" class="top-menu off"><span class="glyphicon glyphicon-off"></span></a>
+                    {% endif %}
+                    {% if not user.is_authenticated %}
+                        <a style="margin-right: 15px" href="{% url 'django.contrib.auth.views.login' %}" class="top-menu lock"><span class="glyphicon glyphicon-lock"></span></a>
+                    {% endif %}
+                    <p style="float: right; margin-right: 25px;" class="top-menu username"><a id="username_a" href ='{% url 'user_profile' %}'>{{ user.username }}</a></p>
+                </div>
             </div>
+
+
+{#            <div class="page-header navbar-fixed-top">#}
+{#				{% if user.is_authenticated %}#}
+{#                    {% if perms.app %}#}
+{#				        <a href="{% url 'post_new' %}" class="top-menu plus"><span class="glyphicon glyphicon-plus"></span></a>#}
+{#                    {% endif %}#}
+{#                    {% if user.is_superuser %}#}
+{#                        <a href="{% url 'post_draft_list' %}" class="top-menu edit"><span style="border: 0" class="glyphicon glyphicon-check"></span></a>#}
+{#                    {% endif %}#}
+{#                    <a href="{% url 'django.contrib.auth.views.logout' %}" class="top-menu off"><span class="glyphicon glyphicon-off"></span></a>#}
+{#                    <p class="top-menu username"><a id="username_a" href ='{% url 'user_profile' %}'>{{ user.username }}</a></p>#}
+{#                    <a href="{% url 'post_new_user' %}" class="top-menu plus"><span class="glyphicon glyphicon-plus"></span></a>#}
+{#                    {% if user.is_superuser %}#}
+{#                        <a href="{% url 'post_draft_list_user' %}" class="top-menu edit"><span class="glyphicon glyphicon-check"></span></a>#}
+{#                    {% endif %}#}
+{#				{% else %}#}
+{#				    <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu lock"><span class="glyphicon glyphicon-lock"></span></a>#}
+{#				{% endif %}#}
+{#				<h1><a class="HF" href="{% url 'app.views.post_list' %}">HumanFinder</a>#}
+{#                    <a class="" id="findyouhospital" href ="{% url 'post_list' %}">Пациенты</a>#}
+{#                    <a class="" id="findyou" href ="{% url 'post_list_user' %}">Объявления</a></h1>#}
+{#            </div>#}
+
+
+
+
             <div class="row bar-search">
                 {% block search %}
                 {% endblock %}
             </div>
         </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-            <div class="content container col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div>
+            <div class="block_post col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     {% block content %}
 					{% endblock %}
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
             <div class="modal-footer col-lg-12 col-md-12 col-sm-12 col-xs-12">
             </div>
         </div>

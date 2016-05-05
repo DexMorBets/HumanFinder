@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+    <script>
+      function initMap() {
+          var styleArray = [
+              {
+                  featureType: "all",
+                  stylers: [
+                      {saturation: -80}
+                  ]
+              }, {
+                  featureType: "road.arterial",
+                  elementType: "geometry",
+                  stylers: [
+                      {hue: "#3EB9F7"},
+                      {saturation: 50}
+                  ]
+              }, {
+                  featureType: "poi.business",
+                  elementType: "labels",
+                  stylers: [
+                      {visibility: "on"}
+                  ]
+              }
+          ];
+          var myLatLng = {lat: {{ post.hospital.lat }}, lng: {{post.hospital.lng}}};
+          var map = new google.maps.Map(document.getElementById('map'), {
+              center: myLatLng,
+              styles: styleArray,
+              zoom: 17
+          });
+          var image = {
+              url: '{% static "img/post/marker.png" %}'
+          };
+          var marker = new google.maps.Marker({
+              map: map,
+              position: myLatLng,
+              icon: image,
+              title: '{{ post.hospital.hospital_name }}'
+          });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDy4VU470BtjNNKRHpfOGpnwrc1rvQZKmo&callback=initMap"
+        async defer></script>
+
+    <div id="map"></div>
+{% endblock %}

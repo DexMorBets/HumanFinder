@@ -6,13 +6,12 @@
     {% if form.errors %}
         <p id="error_login">{{ form.errors }}</p>
     {% endif %}
-	<form method="POST" class="post-form">{% csrf_token %}
+	<form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
         <div class="edit_form col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <p class="nov_ob">Новое объявления</p>
             <div class="FIO">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     {{ form.surname }}
-
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     {{ form.name }}
@@ -74,9 +73,13 @@
                 <p>Город</p>
                 {{ form.city }}
             </div>
-            <div class="row bodys">
-                <p>Название учреждения</p>
-                {{ form.hospital }}
+            <div class="row user_address">
+                <p>Адрес</p>
+                {{ form.address }}
+            </div>
+            <div class="row user_phone_number">
+                <p>Контактные данные</p>
+                {{ form.phone_number }}
             </div>
             <div class="row bodys">
                 <p>Головной убор</p>
@@ -112,10 +115,13 @@
             </div>
             <div class="text">
                 {% if form.text.value %}
-                    <textarea cols="40" id="id_text" name="text" rows="10" placeholder="При себе имел">{{ form.text.value }}</textarea>
+                    <textarea cols="40" id="id_text" name="text" rows="10" placeholder="Описание">{{ form.text.value }}</textarea>
                 {% else %}
-                    <textarea cols="40" id="id_text" name="text" rows="10" placeholder="При себе имел">{{ form.text.placeholder }}</textarea>
+                    <textarea cols="40" id="id_text" name="text" rows="10" placeholder="Описание">{{ form.text.placeholder }}</textarea>
                 {% endif %}
+            </div>
+            <div class="row image_edit">
+                <input id="id_image" name="image" type="file">
             </div>
             <button type="submit" class="save1 btn btn-default">Сохранить</button>
         </div>
