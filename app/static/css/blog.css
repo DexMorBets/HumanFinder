@@ -11,18 +11,17 @@ body {
 }
 
 .search {
-    margin-bottom: 30px;
-    background-color: #F5F5F5;
+    margin-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+
 }
 
 .search1 {
+    background-color: #F7F7F7;
+    border-radius: 18px;
     margin-bottom: 30px;
-    margin-top: 8px;
-    background-color: #F5F5F5;
-    position:fixed;
-    z-index: 9;
-    width: 102%;
-    min-width: 1370px;
 }
 
 .modal-footer {
@@ -59,6 +58,7 @@ body {
     padding-left: 0px;
     padding-right: 0px;
     min-height: 1000px;
+    min-width: 820px;
     }
 
 h1, h2, h3, h4 {
@@ -149,7 +149,7 @@ h1, h2, h3, h4 {
     }
 
 .post3:first-child {
-        margin-top: 100px;
+        margin-top: 50px;
     }
 
 .post h1 a, .post h1 a:visited {
@@ -447,11 +447,19 @@ select {
     margin-top: 3px;
 }
 
-#id_name, #id_surname, #id_fam, #id_age, #id_height {
+#id_name, #id_surname, #id_fam, #id_age, #id_height, #id_id {
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 25px;
     height: 50px;
     padding: 6px 12px 6px 12px;
+    width: 250px;
+}
+
+#id_body, #id_hair_color, #id_eyes_color, #id_hat, #id_hat_color,#id_vverh, #id_vverh_color,
+#id_niz, #id_niz_color, #id_boots, #id_boots_color {
+    height: 50px;
+    padding: 6px 12px 6px 12px;
+    width: 250px;
 }
 
 .nov_ob {
@@ -534,7 +542,7 @@ select {
     padding-right: 15px;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 20px;
-    border-radius: 18px;
+    border-radius: 4px;
     margin-bottom: 20px;
     height: 200px;
     text-align: justify;
@@ -548,24 +556,19 @@ select {
     margin: 0;
 }
 
-#id_age, #id_height {
-    width: 100px;
-}
-
 #id_age {
     float: left;
-    margin-left: 26%;
+    width: 92px;
 }
 
 #id_height {
     float: right;
-    margin-right: 33%;
+    width: 92px;
 }
 
 .age {
     text-align: center;
     margin-bottom: 20px;
-    margin-left: 4.1%;
 }
 
 .opis_2 {
@@ -574,15 +577,11 @@ select {
     font-size: 28px;
 }
 
-#id_body, #id_eyes_color, #id_hair_color{
-    padding: 6px 12px 6px 12px;
-    width: 40%;
-    font-size: 25px;
-}
-
 .bodys, .eyes, .hair {
+    font-family: 'Open Sans Condensed', sans-serif;
     padding: 6px 12px 6px 12px;
     margin-bottom: 0;
+    font-size: 28px;
 }
 
 .user_address, .user_phone_number {
@@ -596,15 +595,16 @@ select {
 
 #id_address, #id_phone_number {
     padding: 6px 12px 6px 12px;
-    width: 40%;
+    width: 250px;
     font-size: 25px;
 }
 
 .check {
-    margin-left: 30%;
-    margin-right: 30%;
+
     margin-top: 20px;
     padding: 0;
+    width: 250px;
+    text-align: center;
 }
 
 
@@ -654,13 +654,13 @@ select {
 
 #id_city {
     padding: 6px 12px 6px 12px;
-    width: 40%;
+    width: 250px;
     font-size: 25px;
 }
 
 #id_hospital {
     padding: 6px 12px 6px 12px;
-    width: 40%;
+    width: 250px;
     font-size: 25px;
     margin-bottom: 45px;
 }
@@ -669,13 +669,6 @@ select {
     padding: 6px 12px 6px 12px;
     font-size: 25px;
     width: 300px;
-}
-
-
-#id_hat, #id_hat_color, #id_vverh, #id_vverh_color, #id_niz, #id_niz_color, #id_boots, #id_boots_color {
-    padding: 6px 12px 6px 12px;
-    width: 40%;
-    font-size: 25px;
 }
 
 #id_boots_color {
@@ -928,10 +921,6 @@ hr {
     padding: 0;
 }
 
-.search {
-    background-color: #777777;
-}
-
 .circle{
     width: 15px;
     height: 15px;
@@ -1070,12 +1059,28 @@ a .image_edit{
     padding: 0;
 }
 
-.opis_post_detail1 {
-    /*margin-top: 25%;*/
-}
-
 .round {
     border-radius: 18px;
     margin-bottom: 15px;
     border: 1px solid #3EB9F7;
+}
+
+.inf {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.inf1 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-bottom: 10px;
+    font-size: 25px;
+    height: 50px;
+}
+
+.inf2 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-bottom: 10px;
+    font-size: 20px;
 }

@@ -10,13 +10,13 @@
         <div class="edit_form col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <p class="nov_ob">Новое объявления</p>
             <div class="FIO">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div style="padding: 0; text-align: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     {{ form.surname }}
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div style="padding: 0; text-align: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     {{ form.name }}
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div style="padding: 0; text-align: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     {{ form.fam }}
                 </div>
             </div>
@@ -35,8 +35,17 @@
         <div class="edit_form1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <p class="opis">Описание</p>
             <div class="row age">
-                {{ form.age }}
-                {{ form.height }}
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                <div style="padding: 0;margin-left: 20px" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    {{ form.age }}
+                    <p style="margin-top: 24px; font-size: 22px">лет</p>
+                </div>
+                <div style="padding: 0" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <p style="margin-top: 24px; margin-left: 13%; font-size: 22px; float: right;">см</p>
+                    {{ form.height }}
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
             </div>
             <div class="opis_2">
                 <div class="bodys">
@@ -57,14 +66,12 @@
                         {{ form.eyes_color }}
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                <div class="check row col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                <div style="margin-left: 37%" class="check">
                     <div>Шрамы:<p>{{ form.shramy }}</p></div>
                     <div>Тату:<p>{{ form.tatu }}</p></div>
                     <div>Протезы:<p>{{ form.protez }}</p></div>
                     <div>Отсутвствие конечностей:<p>{{ form.konech }}</p></div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
             </div>
         </div>
         <div class="edit_form2 col-lg-12 col-md-12 col-sm-12 col-xs-12">

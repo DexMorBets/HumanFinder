@@ -1,33 +1,161 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles %}
 
+{##}
+{#{% block search %}#}
+{#    <div class="row search1">#}
+{##}
+{#        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#            <form style="padding: 0" method="GET"  class="navbar-form">{% csrf_token %}#}
+{#                <div class="form-group">#}
+{#                        {{ form.name }}#}
+{#                        {{ form.surname }}#}
+{#                        {{ form.fam }}#}
+{#                </div>#}
+{#                <button type="submit" class="btn btn-default save3">Искать</button>#}
+{#            </form>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
 
-{% block search %}
-    <div class="row search1">
-
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+{% block content %}
+    <div style="width: 350px; margin-right: 100px; margin-left: 15px" class="search col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="row search1">
             <form style="padding: 0" method="GET"  class="navbar-form">{% csrf_token %}
                 <div class="form-group">
+                    <div class="row">
+                        <p class="inf">Общая информация</p>
+                    </div>
+                    <div class="row inf1" style="margin-bottom: 30px">
+                        {{ form.id }}
+                    </div>
+                    <div class="row inf1">
                         {{ form.name }}
+                    </div>
+                    <div class="row inf1">
                         {{ form.surname }}
+                    </div>
+                    <div class="row inf1">
                         {{ form.fam }}
+                    </div>
+                    <div class="row" style="margin-bottom: 10px; padding-left: 15px; padding-right: 15px">
+                        <div>{{ form.age }}</div>
+                        <div>{{ form.height }}</div>
+                    </div>
+                    <div class="row">
+                        <p class="inf">Описание</p>
+                    </div>
+                    <div class="row inf2">
+                        Телосложение
+                    </div>
+                    <div class="row inf1">
+                        {{ form.body }}
+                    </div>
+                    <div class="row inf2">
+                        Цвет волос
+                    </div>
+                    <div class="row inf1">
+                        {{ form.hair_color }}
+                    </div>
+                    <div class="row inf2">
+                        Цвет глаз
+                    </div>
+                    <div class="row inf1" style="margin-bottom: 20px">
+                        {{ form.eyes_color }}
+                    </div>
+                    <div class="row check inf2" style="margin: 0">
+                        <div>Шрамы:<p>{{ form.shramy }}</p></div>
+                        <div>Тату:<p>{{ form.tatu }}</p></div>
+                        <div>Протезы:<p>{{ form.protez }}</p></div>
+                        <div>Отсутвствие конечностей:<p>{{ form.konech }}</p></div>
+                    </div>
+{#                    <div class="row inf1">#}
+{#                        <select title="hat" id="id_hat" name="hat">#}
+{#                            {% for x, y in form.hat.field.choices %}#}
+{#                                <option value="{{ x }}">{{ y }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </div>#}
+                    <div class="row inf2">
+                        Головной убор
+                    </div>
+                    <div class="row inf1">
+                        {{ form.hat }}
+                    </div>
+                    <div class="row inf2">
+                        Цвет головного убора
+                    </div>
+                    <div class="row inf1">
+                        {{ form.hat_color }}
+                    </div>
+                    <div class="row inf2">
+                        Верхняя одежда
+                    </div>
+                    <div class="row inf1">
+                        {{ form.vverh }}
+                    </div>
+                    <div class="row inf2">
+                        Цвет верхней одежды
+                    </div>
+                    <div class="row inf1">
+                        {{ form.vverh_color }}
+                    </div>
+                    <div class="row inf2">
+                        Штаны
+                    </div>
+                    <div class="row inf1">
+                        {{ form.niz }}
+                    </div>
+                    <div class="row inf2">
+                        Цвет штанов
+                    </div>
+                    <div class="row inf1">
+                        {{ form.niz_color }}
+                    </div>
+                    <div class="row inf2">
+                        Обувь
+                    </div>
+                    <div class="row inf1">
+                        {{ form.boots }}
+                    </div>
+                    <div class="row inf2">
+                        Цвет обуви
+                    </div>
+                    <div class="row inf1" style="margin-bottom: 50px">
+                        {{ form.boots_color }}
+                    </div>
+{#                    <div class="row">#}
+{#                        {{ form.text }}#}
+{#                    </div>#}
+                    <div class="row">
+                        <button style="width: 215px; margin-bottom: 20px" type="submit" class="btn btn-default save3">Искать</button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-default save3">Искать</button>
             </form>
         </div>
     </div>
-{% endblock %}
 
-{% block content %}
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+
+
+
+
     <div class="content container col-lg-6 col-md-6 col-sm-6 col-xs-6">
     {% for post in posts %}
         <div class="post3 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="post">
-            <a class="comments" href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.approved_comments.count }}</a>
-			<div class="date1">
-				<p class="date1">{{ post.published_date }}</p>
-			</div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <a class="comments" style="float: left" href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.approved_comments.count }}</a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <p style="font-size: 16">ID {{ post.pk }}</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="date1">
+				        <p class="date1">{{ post.published_date }}</p>
+			        </div>
+                </div>
+            </div>
 			<h1 class="FIO_post_detail1"><a href="{% url 'app.views.post_detail' pk=post.pk %}">{{ post.surname }} {{ post.name }} {{ post.fam }}</a></h1>
             <div class="row row11">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -88,7 +216,7 @@
         </div>
 	{% endfor %}
 
-
+    {% if posts %}
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 columns">
             <ul class="pagination">
@@ -112,6 +240,7 @@
             </ul>
         </div>
     </div>
+    {% endif %}
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
 {% endblock content %}

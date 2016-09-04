@@ -51,35 +51,12 @@
             </div>
 
 
-{#            <div class="page-header navbar-fixed-top">#}
-{#				{% if user.is_authenticated %}#}
-{#                    {% if perms.app %}#}
-{#				        <a href="{% url 'post_new' %}" class="top-menu plus"><span class="glyphicon glyphicon-plus"></span></a>#}
-{#                    {% endif %}#}
-{#                    {% if user.is_superuser %}#}
-{#                        <a href="{% url 'post_draft_list' %}" class="top-menu edit"><span style="border: 0" class="glyphicon glyphicon-check"></span></a>#}
-{#                    {% endif %}#}
-{#                    <a href="{% url 'django.contrib.auth.views.logout' %}" class="top-menu off"><span class="glyphicon glyphicon-off"></span></a>#}
-{#                    <p class="top-menu username"><a id="username_a" href ='{% url 'user_profile' %}'>{{ user.username }}</a></p>#}
-{#                    <a href="{% url 'post_new_user' %}" class="top-menu plus"><span class="glyphicon glyphicon-plus"></span></a>#}
-{#                    {% if user.is_superuser %}#}
-{#                        <a href="{% url 'post_draft_list_user' %}" class="top-menu edit"><span class="glyphicon glyphicon-check"></span></a>#}
-{#                    {% endif %}#}
-{#				{% else %}#}
-{#				    <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu lock"><span class="glyphicon glyphicon-lock"></span></a>#}
-{#				{% endif %}#}
-{#				<h1><a class="HF" href="{% url 'app.views.post_list' %}">HumanFinder</a>#}
-{#                    <a class="" id="findyouhospital" href ="{% url 'post_list' %}">Пациенты</a>#}
-{#                    <a class="" id="findyou" href ="{% url 'post_list_user' %}">Объявления</a></h1>#}
+
+
+{#            <div class="row bar-search">#}
+{#                {% block search %}#}
+{#                {% endblock %}#}
 {#            </div>#}
-
-
-
-
-            <div class="row bar-search">
-                {% block search %}
-                {% endblock %}
-            </div>
         </div>
         <div>
             <div class="block_post col-lg-12 col-md-12 col-sm-12 col-xs-12">

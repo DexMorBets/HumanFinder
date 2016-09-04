@@ -15,40 +15,60 @@ def post_list(request, page_number=1):
     if request.method == "GET":
         form = SearchForm1(request.GET)
         if form.is_valid():
-            if form.cleaned_data['name'] and form.cleaned_data['surname'] and form.cleaned_data['fam']:
-                posts = Post.objects.filter(published_date__lte=timezone.now(),
-                                            name__contains=form.cleaned_data['name'],
-                                            surname__contains=form.cleaned_data['surname'],
-                                            fam__contains=form.cleaned_data['fam']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['name'] and form.cleaned_data['surname']:
-                posts = Post.objects.filter(published_date__lte=timezone.now(),
-                                            name__contains=form.cleaned_data['name'],
-                                            surname__contains=form.cleaned_data['surname']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['name'] and form.cleaned_data['fam']:
-                posts = Post.objects.filter(published_date__lte=timezone.now(),
-                                            name__contains=form.cleaned_data['name'],
-                                            fam__contains=form.cleaned_data['fam']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['surname'] and form.cleaned_data['fam']:
-                posts = Post.objects.filter(published_date__lte=timezone.now(),
-                                            surname__contains=form.cleaned_data['surname'],
-                                            fam__contains=form.cleaned_data['fam']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['name']:
-                posts = Post.objects.filter(published_date__lte=timezone.now(),
-                                            name__contains=form.cleaned_data['name']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['surname']:
-                posts = Post.objects.filter(published_date__lte=timezone.now(),
-                                            surname__contains=form.cleaned_data['surname']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['fam']:
-                posts = Post.objects.filter(published_date__lte=timezone.now(),
-                                            fam__contains=form.cleaned_data['fam']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
+            if form.cleaned_data['name'] or form.cleaned_data['surname'] or form.cleaned_data['fam']\
+                    or form.cleaned_data['id'] or form.cleaned_data['age'] or form.cleaned_data['height']\
+                    or form.cleaned_data['body'] or form.cleaned_data['hair_color'] or form.cleaned_data['eyes_color']\
+                    or form.cleaned_data['hat'] or form.cleaned_data['hat_color'] or form.cleaned_data['vverh']\
+                    or form.cleaned_data['vverh_color'] or form.cleaned_data['niz'] or form.cleaned_data['niz_color']\
+                    or form.cleaned_data['boots'] or form.cleaned_data['boots_color'] or form.cleaned_data['shramy']\
+                    or form.cleaned_data['tatu'] or form.cleaned_data['protez'] or form.cleaned_data['konech']:
+                kwargs = {'published_date__lte': timezone.now()}
+                if form.cleaned_data['id']:
+                    kwargs['id'] = form.cleaned_data['id']
+                if form.cleaned_data['name']:
+                    kwargs['name__contains'] = form.cleaned_data['name']
+                if form.cleaned_data['surname']:
+                    kwargs['surname__contains'] = form.cleaned_data['surname']
+                if form.cleaned_data['fam']:
+                    kwargs['fam__contains'] = form.cleaned_data['fam']
+                if form.cleaned_data['age']:
+                    kwargs['age'] = form.cleaned_data['age']
+                if form.cleaned_data['height']:
+                    kwargs['height'] = form.cleaned_data['height']
+                if form.cleaned_data['body']:
+                    kwargs['body'] = form.cleaned_data['body']
+                if form.cleaned_data['hair_color']:
+                    kwargs['hair_color'] = form.cleaned_data['hair_color']
+                if form.cleaned_data['eyes_color']:
+                    kwargs['eyes_color'] = form.cleaned_data['eyes_color']
+                if form.cleaned_data['hat']:
+                    kwargs['hat'] = form.cleaned_data['hat']
+                if form.cleaned_data['hat_color']:
+                    kwargs['hat_color'] = form.cleaned_data['hat_color']
+                if form.cleaned_data['vverh']:
+                    kwargs['vverh'] = form.cleaned_data['vverh']
+                if form.cleaned_data['vverh_color']:
+                    kwargs['vverh_color'] = form.cleaned_data['vverh_color']
+                if form.cleaned_data['niz']:
+                    kwargs['niz'] = form.cleaned_data['niz']
+                if form.cleaned_data['niz_color']:
+                    kwargs['niz_color'] = form.cleaned_data['niz_color']
+                if form.cleaned_data['boots']:
+                    kwargs['boots'] = form.cleaned_data['boots']
+                if form.cleaned_data['boots_color']:
+                    kwargs['boots_color'] = form.cleaned_data['boots_color']
 
+
+                if form.cleaned_data['shramy']:
+                    kwargs['shramy'] = form.cleaned_data['shramy']
+                if form.cleaned_data['tatu']:
+                    kwargs['tatu'] = form.cleaned_data['tatu']
+                if form.cleaned_data['protez']:
+                    kwargs['protez'] = form.cleaned_data['protez']
+                if form.cleaned_data['konech']:
+                    kwargs['konech'] = form.cleaned_data['konech']
+                posts = Post.objects.filter(**kwargs).order_by('-published_date')
+                current_page = Paginator(posts, 4)
             else:
                 posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
                 current_page = Paginator(posts, 4)
@@ -65,45 +85,64 @@ def post_list_user(request, page_number=1):
     if request.method == "GET":
         form = SearchForm1(request.GET)
         if form.is_valid():
-            if form.cleaned_data['name'] and form.cleaned_data['surname'] and form.cleaned_data['fam']:
-                posts = Post_user.objects.filter(published_date__lte=timezone.now(),
-                                            name__contains=form.cleaned_data['name'],
-                                            surname__contains=form.cleaned_data['surname'],
-                                            fam__contains=form.cleaned_data['fam']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['name'] and form.cleaned_data['surname']:
-                posts = Post_user.objects.filter(published_date__lte=timezone.now(),
-                                            name__contains=form.cleaned_data['name'],
-                                            surname__contains=form.cleaned_data['surname']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['name'] and form.cleaned_data['fam']:
-                posts = Post_user.objects.filter(published_date__lte=timezone.now(),
-                                            name__contains=form.cleaned_data['name'],
-                                            fam__contains=form.cleaned_data['fam']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['surname'] and form.cleaned_data['fam']:
-                posts = Post_user.objects.filter(published_date__lte=timezone.now(),
-                                            surname__contains=form.cleaned_data['surname'],
-                                            fam__contains=form.cleaned_data['fam']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['name']:
-                posts = Post_user.objects.filter(published_date__lte=timezone.now(),
-                                            name__contains=form.cleaned_data['name']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['surname']:
-                posts = Post_user.objects.filter(published_date__lte=timezone.now(),
-                                            surname__contains=form.cleaned_data['surname']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
-            elif form.cleaned_data['fam']:
-                posts = Post_user.objects.filter(published_date__lte=timezone.now(),
-                                            fam__contains=form.cleaned_data['fam']).order_by('-published_date')
-                current_page = Paginator(posts, 4)
+            if form.cleaned_data['name'] or form.cleaned_data['surname'] or form.cleaned_data['fam']\
+                    or form.cleaned_data['id'] or form.cleaned_data['age'] or form.cleaned_data['height']\
+                    or form.cleaned_data['body'] or form.cleaned_data['hair_color'] or form.cleaned_data['eyes_color']\
+                    or form.cleaned_data['hat'] or form.cleaned_data['hat_color'] or form.cleaned_data['vverh']\
+                    or form.cleaned_data['vverh_color'] or form.cleaned_data['niz'] or form.cleaned_data['niz_color']\
+                    or form.cleaned_data['boots'] or form.cleaned_data['boots_color'] or form.cleaned_data['shramy']\
+                    or form.cleaned_data['tatu'] or form.cleaned_data['protez'] or form.cleaned_data['konech']:
+                kwargs = {'published_date__lte': timezone.now()}
+                if form.cleaned_data['id']:
+                    kwargs['id'] = form.cleaned_data['id']
+                if form.cleaned_data['name']:
+                    kwargs['name__contains'] = form.cleaned_data['name']
+                if form.cleaned_data['surname']:
+                    kwargs['surname__contains'] = form.cleaned_data['surname']
+                if form.cleaned_data['fam']:
+                    kwargs['fam__contains'] = form.cleaned_data['fam']
+                if form.cleaned_data['age']:
+                    kwargs['age'] = form.cleaned_data['age']
+                if form.cleaned_data['height']:
+                    kwargs['height'] = form.cleaned_data['height']
+                if form.cleaned_data['body']:
+                    kwargs['body'] = form.cleaned_data['body']
+                if form.cleaned_data['hair_color']:
+                    kwargs['hair_color'] = form.cleaned_data['hair_color']
+                if form.cleaned_data['eyes_color']:
+                    kwargs['eyes_color'] = form.cleaned_data['eyes_color']
+                if form.cleaned_data['hat']:
+                    kwargs['hat'] = form.cleaned_data['hat']
+                if form.cleaned_data['hat_color']:
+                    kwargs['hat_color'] = form.cleaned_data['hat_color']
+                if form.cleaned_data['vverh']:
+                    kwargs['vverh'] = form.cleaned_data['vverh']
+                if form.cleaned_data['vverh_color']:
+                    kwargs['vverh_color'] = form.cleaned_data['vverh_color']
+                if form.cleaned_data['niz']:
+                    kwargs['niz'] = form.cleaned_data['niz']
+                if form.cleaned_data['niz_color']:
+                    kwargs['niz_color'] = form.cleaned_data['niz_color']
+                if form.cleaned_data['boots']:
+                    kwargs['boots'] = form.cleaned_data['boots']
+                if form.cleaned_data['boots_color']:
+                    kwargs['boots_color'] = form.cleaned_data['boots_color']
 
+
+                if form.cleaned_data['shramy']:
+                    kwargs['shramy'] = form.cleaned_data['shramy']
+                if form.cleaned_data['tatu']:
+                    kwargs['tatu'] = form.cleaned_data['tatu']
+                if form.cleaned_data['protez']:
+                    kwargs['protez'] = form.cleaned_data['protez']
+                if form.cleaned_data['konech']:
+                    kwargs['konech'] = form.cleaned_data['konech']
+                posts = Post_user.objects.filter(**kwargs).order_by('-published_date')
+                current_page = Paginator(posts, 4)
             else:
                 posts = Post_user.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
                 current_page = Paginator(posts, 4)
             return render(request, 'blog/post_list_user.html', {'posts': current_page.page(page_number), 'form': form})
-
     else:
         form = SearchForm1()
 

@@ -7,10 +7,19 @@
     {% for post in posts %}
         <div class="post2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="post">
-            <a class="comments" href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.approved_comments.count }}</a>
-			<div class="date1">
-				<p class="date1">{{ post.published_date }}</p>
-			</div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <a class="comments" style="float: left" href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.approved_comments.count }}</a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <p style="font-size: 16">ID {{ post.pk }}</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="date1">
+				        <p class="date1">{{ post.published_date }}</p>
+			        </div>
+                </div>
+            </div>
 			<h1 class="FIO_post_detail1"><a href="{% url 'app.views.post_detail' pk=post.pk %}">{{ post.surname }} {{ post.name }} {{ post.fam }}</a></h1>
             <div class="row row11">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
