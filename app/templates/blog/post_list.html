@@ -1,23 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles %}
 
-{##}
-{#{% block search %}#}
-{#    <div class="row search1">#}
-{##}
-{#        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
-{#            <form style="padding: 0" method="GET"  class="navbar-form">{% csrf_token %}#}
-{#                <div class="form-group">#}
-{#                        {{ form.name }}#}
-{#                        {{ form.surname }}#}
-{#                        {{ form.fam }}#}
-{#                </div>#}
-{#                <button type="submit" class="btn btn-default save3">Искать</button>#}
-{#            </form>#}
-{#        </div>#}
-{#    </div>#}
-{#{% endblock %}#}
-
 {% block content %}
     <div style="width: 350px; margin-right: 100px; margin-left: 15px" class="search col-lg-3 col-md-3 col-sm-3 col-xs-3">
         <div class="row search1">
@@ -128,7 +111,7 @@
 {#                        {{ form.text }}#}
 {#                    </div>#}
                     <div class="row">
-                        <button style="width: 215px; margin-bottom: 20px" type="submit" class="btn btn-default save3">Искать</button>
+                        <button style="margin-bottom: 20px" type="submit" class="btn btn-default save3">Искать</button>
                     </div>
                 </div>
             </form>
@@ -217,29 +200,29 @@
 	{% endfor %}
 
     {% if posts %}
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 columns">
-            <ul class="pagination">
-                {% if posts.has_previous %}
-                    <li class="arrow"><a href="/page/{{ posts.previous_page_number }}/">&laquo;</a></li>
-                {% else %}
-                    <li class="arrow disabled"><a href="">&laquo;</a></li>
-                {% endif %}
-                {% for page in posts.paginator.page_range %}
-                    {% if page == posts.number %}
-                        <li class="current"><a href="/page/{{ page }}/">{{ page }}</a></li>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 columns">
+                <ul class="pagination">
+                    {% if posts.has_previous %}
+                        <li class="arrow"><a href="/page/{{ posts.previous_page_number }}/">&laquo;</a></li>
                     {% else %}
-                        <li><a href="/page/{{ page }}/">{{ page }}</a></li>
+                        <li class="arrow disabled"><a>&laquo;</a></li>
                     {% endif %}
-                {% endfor %}
-                {% if posts.has_next %}
-                    <li class="arrow"><a href="/page/{{ posts.next_page_number }}/">&raquo;</a></li>
-                {% else %}
-                    <li class="arrow disabled"><a href="">&raquo;</a></li>
-                {% endif %}
-            </ul>
+                    {% for page in posts.paginator.page_range %}
+                        {% if page == posts.number %}
+                            <li class="current"><a href="/page/{{ page }}/">{{ page }}</a></li>
+                        {% else %}
+                            <li><a href="/page/{{ page }}/">{{ page }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if posts.has_next %}
+                        <li class="arrow"><a href="/page/{{ posts.next_page_number }}/">&raquo;</a></li>
+                    {% else %}
+                        <li class="arrow disabled"><a>&raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </div>
     {% endif %}
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>

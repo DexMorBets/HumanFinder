@@ -10,7 +10,9 @@
                 <p>{{ post.published_date }}</p>
             </div>
 		{% else %}
-			<a class="btn btn-default opub" href="{% url 'app.views.post_publish_user' pk=post.pk %}">Опубликовать</a>
+            {% if user.is_superuser %}
+			    <a class="btn btn-default opub" href="{% url 'app.views.post_publish_user' pk=post.pk %}">Опубликовать</a>
+            {% endif %}
         {% endif %}
 		{% if user.is_authenticated %}
             {% if user.is_superuser or user.get_username == post.author.get_username %}
@@ -162,85 +164,87 @@
 <hr>
 
 
-{% if user.is_authenticated %}
-    <p class="nov_ob1">Новый комментарий:</p>
-    <form method="POST" class="post-form">{% csrf_token %}
-        <div>
-            {{ form.text}}
-        </div>
-        <div>
-            <button type="submit" class="btn btn-default save2">Добавить комментарий</button>
-        </div>
-    </form>
-{% endif %}
-
-<hr class="comment_hr">
-
-{% for comment in post.comments.all %}
+{% if post.published_date %}
     {% if user.is_authenticated %}
-        {% if comment.approved_comment%}
-            <div class="comment col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="comment_col1 col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <div class="row">
-                        <strong class="author1">{{ comment.author }}</strong>
-                    </div>
-                    <div class="row">
-                        <img class="User" src="{% static "img/post/User.png" %}" alt="User" />
-                    </div>
-                </div>
-
-                <div class="comment_col2 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <div class="row comment_str">
-                        <div class="comment_buttons">
-                            {% if user.is_superuser or user.get_username == comment.author %}
-                                <a class="comment_ok" href="{% url 'comment_remove_user' pk=comment.pk %}"><span class="glyphicon glyphicon-remove remove1 comment_remove1"></span></a>
-                            {% endif %}
-                        </div>
-                        <div class="date2">
-                            {{ comment.created_date }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div>
-                            <p class="comment_text">{{ comment.text }}</p>
-                        </div>
-                    </div>
-                </div>
+        <p class="nov_ob1">Новый комментарий:</p>
+        <form method="POST" class="post-form">{% csrf_token %}
+            <div>
+                {{ form.text}}
             </div>
-
-        {% elif not comment.approved_comment and user.get_username == comment.author  %}
-            <div class="comment col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="comment_col1 col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <div class="row">
-                        <strong class="author1">{{ comment.author }}</strong>
-                    </div>
-                    <div class="row">
-                        <img class="User" src="{% static "img/post/User.png" %}" alt="User" />
-                    </div>
-                </div>
-
-                <div class="comment_col2 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <div class="row comment_str">
-                        <div class="comment_buttons">
-                            <a class="comment_remove" href="{% url 'comment_remove_user' pk=comment.pk %}"><span class="glyphicon glyphicon-remove pencil1"></span></a>
-                            <a class="comment_ok" href="{% url 'comment_approve_user' pk=comment.pk %}"><span class="glyphicon glyphicon-ok remove1 comment_ok1"></span></a>
-                        </div>
-                        <div class="date2">
-                            {{ comment.created_date }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div>
-                            <p class="comment_text">{{ comment.text }}</p>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <button type="submit" class="btn btn-default save2">Добавить комментарий</button>
             </div>
-        {% endif %}
+        </form>
     {% endif %}
-{% empty %}
-    <p class="nocomm">Ещё не добавлено ни одного коментария.</p>
-{% endfor %}
+
+    <hr class="comment_hr">
+
+    {% for comment in post.comments.all %}
+        {% if user.is_authenticated %}
+            {% if comment.approved_comment%}
+                <div class="comment col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="comment_col1 col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <div class="row">
+                            <strong class="author1">{{ comment.author }}</strong>
+                        </div>
+                        <div class="row">
+                            <img class="User" src="{% static "img/post/User.png" %}" alt="User" />
+                        </div>
+                    </div>
+
+                    <div class="comment_col2 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <div class="row comment_str">
+                            <div class="comment_buttons">
+                                {% if user.is_superuser or user.get_username == comment.author %}
+                                    <a class="comment_ok" href="{% url 'comment_remove_user' pk=comment.pk %}"><span class="glyphicon glyphicon-remove remove1 comment_remove1"></span></a>
+                                {% endif %}
+                            </div>
+                            <div class="date2">
+                                {{ comment.created_date }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <p class="comment_text">{{ comment.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% elif not comment.approved_comment and user.get_username == comment.author  %}
+                <div class="comment col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="comment_col1 col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <div class="row">
+                            <strong class="author1">{{ comment.author }}</strong>
+                        </div>
+                        <div class="row">
+                            <img class="User" src="{% static "img/post/User.png" %}" alt="User" />
+                        </div>
+                    </div>
+
+                    <div class="comment_col2 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <div class="row comment_str">
+                            <div class="comment_buttons">
+                                <a class="comment_remove" href="{% url 'comment_remove_user' pk=comment.pk %}"><span class="glyphicon glyphicon-remove pencil1"></span></a>
+                                <a class="comment_ok" href="{% url 'comment_approve_user' pk=comment.pk %}"><span class="glyphicon glyphicon-ok remove1 comment_ok1"></span></a>
+                            </div>
+                            <div class="date2">
+                                {{ comment.created_date }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <p class="comment_text">{{ comment.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% empty %}
+        <p class="nocomm">Ещё не добавлено ни одного коментария.</p>
+    {% endfor %}
+{% endif %}
 </div>
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
 

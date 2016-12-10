@@ -1,5 +1,0 @@
-include LICENSE.txt
-include CONTRIBUTORS.txt
-recursive-include docs *
-recursive-include bootstrap_pagination/templates *.html
-recursive-include bootstrap_pagination/locale *

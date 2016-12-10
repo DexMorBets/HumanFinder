@@ -6,6 +6,16 @@ body {
     background-color: #F0F0F0;
 }
 
+p {
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 15pt;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 .bar-search {
     width: 100%;
 }
@@ -52,6 +62,7 @@ body {
 
 .page-header h1 a:hover {
     color: #1DCFF7;
+    transition-duration: 0.5s;
 }
 	
 .content {
@@ -163,6 +174,12 @@ h1, h2, h3, h4 {
 
 }
 
+.glyphicon-check:hover, .glyphicon-plus:hover{
+    color:#3EB9F7;
+    transition-duration: 0.3s;
+}
+
+
 .glyphicon-check {
     color: white;
     font-size: 17px;
@@ -212,12 +229,6 @@ h1, h2, h3, h4 {
 
 .comment:last-child {
     margin-bottom: 40px;
-}
-
-p {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 15pt;
-    color: black;
 }
 
 #div_btn_login {
@@ -286,6 +297,7 @@ p {
     background-color: #1DCFF7;
     border-color: #1DCFF7;
     color: #ffffff;
+    transition-duration: 0.5s;
 }
 
 .btn-default:active {
@@ -610,7 +622,6 @@ select {
 
 .check p {
     display: block;
-    width:30px;
     float:right;
     margin-top: 8px;
 }
@@ -637,7 +648,6 @@ select {
     padding: 30px;
     border-radius:18px;
     width: 450px;
-    height: 350px;
     margin-top: 30px;
 }
 
@@ -648,7 +658,6 @@ select {
     padding: 30px;
     border-radius:18px;
     width: 450px;
-    height: 415px;
     margin-top: 30px;
 }
 
@@ -693,6 +702,7 @@ select {
     text-align: center;
     padding: 8px 12px 8px 12px;
     font-size: 23px;
+    width: 250px;
 }
 
 .FIO_post_detail, .FIO_post_detail1 {
@@ -704,6 +714,12 @@ select {
     font-size: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.FIO_post_detail a:hover, .FIO_post_detail1 a:hover {
+    color: #3EB9F7;
+    text-decoration: none;
+    transition-duration: 0.2s;
 }
 
 .Male {
@@ -808,7 +824,7 @@ hr {
 }
 
 .row21 {
-    margin-bottom: 0;
+    margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 1%;
     margin-right: 0;
@@ -881,6 +897,10 @@ hr {
 
 .address {
     margin-right: 100px;
+}
+
+.address:hover {
+    color: #3EB9F7;
 }
 
 .address1 {
@@ -1036,6 +1056,10 @@ hr {
     margin-bottom: 20px;
 }
 
+.nocomm1 {
+    margin-bottom: 10px;
+}
+
 .image_edit {
     padding-left: 30px;
     padding-right: 30px;
@@ -1062,7 +1086,6 @@ a .image_edit{
 .round {
     border-radius: 18px;
     margin-bottom: 15px;
-    border: 1px solid #3EB9F7;
 }
 
 .inf {
@@ -1083,4 +1106,25 @@ a .image_edit{
     font-family: 'Open Sans Condensed', sans-serif;
     margin-bottom: 10px;
     font-size: 20px;
+}
+
+.regerror {
+    color: white;
+    background-color: #FF505C;
+    padding: 10px;
+    width:450px;
+    margin-top: 30px;
+    border-radius: 4px;
+    transition-duration: 1s;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.search_heigh_age {
+    width: 250px;
+    margin: 0;
 }

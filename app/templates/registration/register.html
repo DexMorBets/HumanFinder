@@ -4,7 +4,13 @@
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
     <div class="content container col-lg-6 col-md-6 col-sm-6 col-xs-6">
         {% if form.errors %}
-            <p id="error_login">Пароли не совпадают. Попробуйте ещё раз.</p>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                <div class="regerror col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <p id="error_login">Пароли не совпадают. Попробуйте ещё раз.</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+            </div>
         {% endif %}
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>

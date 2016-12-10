@@ -2,10 +2,14 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="Django default" uuid="61a2c7cb-a1f6-4b26-b6f8-bdefdf746856">
+      <database-info product="PostgreSQL" version="9.5.4" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <user-name>admin</user-name>
       <user-password>dfcbdfcedfc7dfc3dfc4</user-password>
-      <schema-pattern>humanfinder.pg_catalog humanfinder.public</schema-pattern>
-      <default-schemas>humanfinder.pg_catalog humanfinder.public</default-schemas>
+      <introspection-scope>humanfinder:pg_catalog,public</introspection-scope>
+      <resolve-scope>humanfinder:pg_catalog,public</resolve-scope>
     </data-source>
   </component>
 </project>

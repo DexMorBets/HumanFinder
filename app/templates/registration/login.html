@@ -3,18 +3,18 @@
 {% block content %}
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
     <div class="content container col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                {% if form.errors %}
-                <p id="error_login">Имя пользователя или пароль не найдены. Попробуйте ещё раз.</p>
-                {% endif %}
+        {% if form.errors %}
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                <div class="regerror col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <p id="error_login">Имя пользователя или пароль не совпадают. Попробуйте ещё раз.</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-        </div>
+        {% endif %}
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-            <div class=" login-div col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class=" login-div clearfix col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <p class="nov_ob2">Вход</p>
                 <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
                 {% csrf_token %}
